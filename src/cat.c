@@ -18,6 +18,7 @@ void cat(int fd) {
     fprintf((FILE *) 2, "cat: read error\n");
     exit(1);
   }
+  printf("\n");
 }
 
 int main(int argc, char *argv[]) {
@@ -28,8 +29,8 @@ int main(int argc, char *argv[]) {
     exit(0);
   }
 
-  for (i = 0; i < argc; i++) {
-    if ((fd = open(argv[i], 0)) < 0) {
+  for (i = 1; i < argc; i++) {
+    if ((fd = open(argv[i], O_RDONLY)) < 0) {
       fprintf((FILE *) 2, "cat: cannot read %s\n", argv[i]);
       exit(1);
     }
